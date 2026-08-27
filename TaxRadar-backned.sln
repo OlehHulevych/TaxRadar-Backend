@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxRadar-Api", "TaxRadar-Api\TaxRadar-Api.csproj", "{69253312-BC3D-4395-A401-79DA674FDCC5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7} = {6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}
+		{3AD8B144-E5AB-4790-B343-29D464DA1377} = {3AD8B144-E5AB-4790-B343-29D464DA1377}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxRadar-Application", "TaxRadar-Application\TaxRadar-Application.csproj", "{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D22BA5AB-EACE-4416-B85D-07518DDADB17} = {D22BA5AB-EACE-4416-B85D-07518DDADB17}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tax-Radar-Domain", "Tax-Radar-Domain\Tax-Radar-Domain.csproj", "{D22BA5AB-EACE-4416-B85D-07518DDADB17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxRadar-Infrastructure", "TaxRadar-Infrastructure\TaxRadar-Infrastructure.csproj", "{3AD8B144-E5AB-4790-B343-29D464DA1377}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7} = {6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69253312-BC3D-4395-A401-79DA674FDCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69253312-BC3D-4395-A401-79DA674FDCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69253312-BC3D-4395-A401-79DA674FDCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69253312-BC3D-4395-A401-79DA674FDCC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A12BE3B-A65E-4DA5-9A6E-5BB539AB56B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D22BA5AB-EACE-4416-B85D-07518DDADB17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D22BA5AB-EACE-4416-B85D-07518DDADB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D22BA5AB-EACE-4416-B85D-07518DDADB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D22BA5AB-EACE-4416-B85D-07518DDADB17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AD8B144-E5AB-4790-B343-29D464DA1377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AD8B144-E5AB-4790-B343-29D464DA1377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AD8B144-E5AB-4790-B343-29D464DA1377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AD8B144-E5AB-4790-B343-29D464DA1377}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

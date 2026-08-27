@@ -1,0 +1,6 @@
+@TaxRadar_backned_HostAddress = http://localhost:5135
+
+GET {{TaxRadar_backned_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
