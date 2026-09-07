@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Tax-Radar-Domain\Tax-Radar-Domain.csproj" />
+      <ProjectReference Include="..\TaxRadar-Application\TaxRadar-Application.csproj" />
     </ItemGroup>
 
 </Project>

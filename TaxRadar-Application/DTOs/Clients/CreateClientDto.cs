@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace TaxRadar_Application.DTOs.Clients;
 
 public sealed record CreateClientDto(
@@ -9,4 +11,4 @@ public sealed record CreateClientDto(
     string? Street,
     string? City,
     string? PostalCode,
-    string? Country);
+    string? Country) : IRequest<ClientDto>;
