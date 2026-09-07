@@ -8,12 +8,12 @@ using TaxRadar_Application.Interfaces;
 
 namespace TaxRadar_Application.Commands.Clients;
 
-public class CreateCommand:IRequestHandler<CreateClientDto, ClientDto>
+public class CreateClientCommand:IRequestHandler<CreateClientDto, ClientDto>
 {
     private readonly IClientRepository _repository;
     private readonly IMapper _mapper;
 
-    public CreateCommand(IClientRepository repository, IMapper mapper)
+    public CreateClientCommand(IClientRepository repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
@@ -24,7 +24,7 @@ public class CreateCommand:IRequestHandler<CreateClientDto, ClientDto>
         var newClient = new Client(request.UserId, request.Name, request.Email,
             request.Ico,request.Dic,request.Street,request.City, request.PostalCode, request.Country);
         await _repository.AddAsync(newClient, cancellationToken);
-        var createdClient = _repository.GetByIdAsync(newClient.Id, cancellationToken);
+        var createdClient = await _repository.GetByIdAsync(newClient.Id, cancellationToken);
         if (createdClient == null) throw new NotFoundException(nameof(Client), newClient.Id);
         return _mapper.Map<ClientDto>(newClient);
 
