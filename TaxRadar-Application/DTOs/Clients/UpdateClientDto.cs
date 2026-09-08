@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace TaxRadar_Application.DTOs.Clients;
 
 public sealed record UpdateClientDto(
@@ -8,4 +10,4 @@ public sealed record UpdateClientDto(
     string? Street,
     string? City,
     string? PostalCode,
-    string? Country);
+    string? Country):IRequest<ClientDto>;

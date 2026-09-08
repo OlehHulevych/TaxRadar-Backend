@@ -25,4 +25,10 @@
       <ProjectReference Include="..\TaxRadar-Application\TaxRadar-Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+        <HintPath>C:\Users\Oleh\.dotnet\packs\Microsoft.AspNetCore.App.Ref\10.0.11\ref\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
