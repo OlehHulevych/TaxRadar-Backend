@@ -3,6 +3,7 @@ using MediatR;
 namespace TaxRadar_Application.DTOs.Clients;
 
 public sealed record UpdateClientDto(
+    Guid Id,
     string Name,
     string? Email,
     string? Ico,

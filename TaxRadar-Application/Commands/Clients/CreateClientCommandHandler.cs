@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Tax_Radar_Domain.Entities;
@@ -8,12 +8,12 @@ using TaxRadar_Application.Interfaces;
 
 namespace TaxRadar_Application.Commands.Clients;
 
-public class CreateClientCommand:IRequestHandler<CreateClientDto, ClientDto>
+public class CreateClientCommandHandler:IRequestHandler<CreateClientDto, ClientDto>
 {
     private readonly IClientRepository _repository;
     private readonly IMapper _mapper;
 
-    public CreateClientCommand(IClientRepository repository, IMapper mapper)
+    public CreateClientCommandHandler(IClientRepository repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;

@@ -29,6 +29,12 @@ public class ClientRepository:IClientRepository
 
     }
 
+    public async Task DeleteAsync(Client entity, CancellationToken cancellationToken)
+    {
+         _context.Clients.Remove(entity);
+         await _context.SaveChangesAsync();
+    }
+
     public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
         await _context.SaveChangesAsync();

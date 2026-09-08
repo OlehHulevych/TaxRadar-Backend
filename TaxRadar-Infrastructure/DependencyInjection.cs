@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using Tax_Radar_Domain.Entities;
 using TaxRadar_Application.Interfaces;
 using TaxRadar_Infrastructure.Persistance;
 using TaxRadar_Infrastructure.Repository;
@@ -15,6 +16,7 @@ public static class DependencyInjection
         services.AddDbContext<ApplicationDbContext>((options) =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
         services.AddScoped<IClientRepository, ClientRepository>();
+        services.AddScoped<IRepository<Client>, ClientRepository>();
         return services;
     }
 }
