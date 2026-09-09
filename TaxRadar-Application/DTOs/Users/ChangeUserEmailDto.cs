@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace TaxRadar_Application.DTOs.Users;
 
-public sealed record ChangeUserEmailDto(string Email);
+public sealed record ChangeUserEmailDto(Guid Id, string Email):IRequest<UserDto>;
