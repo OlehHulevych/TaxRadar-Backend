@@ -6,7 +6,7 @@ using TaxRadar_Infrastructure.Persistance;
 
 namespace TaxRadar_Infrastructure.Repository;
 
-public class ExpenseRepository(ApplicationDbContext context):IRepository<Expense>
+public class ExpenseRepository(ApplicationDbContext context):IRepository<Expense>, IExpenseRepository
 {
     public async Task<Expense?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
@@ -27,11 +27,10 @@ public class ExpenseRepository(ApplicationDbContext context):IRepository<Expense
         await context.SaveChangesAsync();
     }
 
-    public async Task<Expense> GetByUserId(Guid id, CancellationToken ct)
+    public async Task<IList<Expense>> GetByUserId(Guid id, CancellationToken ct)
     {
-        var expense = await context.Expenses.FirstOrDefaultAsync(e=>e.Id==id, ct);
-        if (expense == null) throw new NotFoundException(nameof(Expense), id);
-        return expense;
+        var expenses = await context.Expenses.Where(e=>e.UserId==id).ToListAsync(ct);
+        return expenses;
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)

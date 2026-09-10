@@ -7,7 +7,7 @@ using TaxRadar_Application.Queries.Expenses;
 
 namespace TaxRadar_Application.Commands.Expenses;
 
-public class CreateExpenseCommandHandler(IRepository<Expense> repository, IMapper mapper):IRequestHandler<CreateExpenseQuery, ExpenseDto>
+public class CreateExpenseCommandHandler(IExpenseRepository repository, IMapper mapper):IRequestHandler<CreateExpenseQuery, ExpenseDto>
 {
     public async Task<ExpenseDto> Handle(CreateExpenseQuery request, CancellationToken cancellationToken)
     {
