@@ -24,7 +24,7 @@ public class UserRepository(ApplicationDbContext context):IRepository<User>
     public async Task DeleteAsync(User entity, CancellationToken cancellationToken)
     {
         context.Users.Remove(entity);
-        await context.SaveChangesAsync();;
+        await context.SaveChangesAsync();
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)

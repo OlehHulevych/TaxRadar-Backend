@@ -1,9 +1,10 @@
 using FluentValidation;
 using TaxRadar_Application.DTOs.Expenses;
+using TaxRadar_Application.Queries.Expenses;
 
 namespace TaxRadar_Application.Validators.Expenses;
 
-public sealed class CreateExpenseDtoValidator : AbstractValidator<CreateExpenseDto>
+public sealed class CreateExpenseDtoValidator : AbstractValidator<CreateExpenseQuery>
 {
     public CreateExpenseDtoValidator()
     {

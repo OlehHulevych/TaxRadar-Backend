@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
 using Tax_Radar_Domain.Entities;
 using TaxRadar_Application.Interfaces;
 using TaxRadar_Infrastructure.Persistance;
@@ -18,6 +17,7 @@ public static class DependencyInjection
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<IRepository<User>, UserRepository>();
         services.AddScoped<IRepository<Client>, ClientRepository>();
+        services.AddScoped<IRepository<Expense>, ExpenseRepository>();
         return services;
     }
 }

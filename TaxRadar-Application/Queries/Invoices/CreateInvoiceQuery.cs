@@ -1,8 +1,9 @@
 using Tax_Radar_Domain.Enums;
+using TaxRadar_Application.DTOs.Invoices;
 
-namespace TaxRadar_Application.DTOs.Invoices;
+namespace TaxRadar_Application.Queries.Invoices;
 
-public sealed record CreateInvoiceDto(
+public sealed record CreateInvoiceQuery(
     Guid UserId,
     Guid ClientId,
     string InvoiceNumber,
@@ -10,4 +11,4 @@ public sealed record CreateInvoiceDto(
     DateOnly DueDate,
     Currency Currency,
     string? Notes,
-    IReadOnlyList<CreateInvoiceItemDto> Items);
+    IReadOnlyList<CreateInvoiceItemQuery> Items);

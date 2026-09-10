@@ -5,12 +5,13 @@ using TaxRadar_Application.DTOs.Clients;
 using TaxRadar_Application.DTOs.Users;
 using TaxRadar_Application.Exceptions;
 using TaxRadar_Application.Interfaces;
+using TaxRadar_Application.Queries.Users;
 
 namespace TaxRadar_Application.Commands.Users;
 
-public class UpdateUserCommandHandler(IRepository<User> repository, IMapper mapper):IRequestHandler<UpdateUserProfileDto, UserDto>
+public class UpdateUserCommandHandler(IRepository<User> repository, IMapper mapper):IRequestHandler<UpdateUserProfileQuery, UserDto>
 {
-    public async Task<UserDto> Handle(UpdateUserProfileDto request, CancellationToken cancellationToken)
+    public async Task<UserDto> Handle(UpdateUserProfileQuery request, CancellationToken cancellationToken)
     {
         var userForUpdate = await repository.GetByIdAsync(request.Id, cancellationToken);
         if (userForUpdate == null) throw new NotFoundException(nameof(User), request.Id);

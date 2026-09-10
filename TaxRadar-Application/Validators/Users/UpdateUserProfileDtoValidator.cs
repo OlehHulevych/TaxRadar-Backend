@@ -1,9 +1,10 @@
 using FluentValidation;
 using TaxRadar_Application.DTOs.Users;
+using TaxRadar_Application.Queries.Users;
 
 namespace TaxRadar_Application.Validators.Users;
 
-public sealed class UpdateUserProfileDtoValidator : AbstractValidator<UpdateUserProfileDto>
+public sealed class UpdateUserProfileDtoValidator : AbstractValidator<UpdateUserProfileQuery>
 {
     public UpdateUserProfileDtoValidator()
     {

@@ -1,8 +1,9 @@
 using MediatR;
+using TaxRadar_Application.DTOs.Clients;
 
-namespace TaxRadar_Application.DTOs.Clients;
+namespace TaxRadar_Application.Queries.Clients;
 
-public sealed record CreateClientDto(
+public sealed record CreateClientQuery(
     Guid UserId,
     string Name,
     string? Email,

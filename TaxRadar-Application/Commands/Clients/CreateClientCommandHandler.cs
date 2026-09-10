@@ -5,10 +5,11 @@ using Tax_Radar_Domain.Entities;
 using TaxRadar_Application.DTOs.Clients;
 using TaxRadar_Application.Exceptions;
 using TaxRadar_Application.Interfaces;
+using TaxRadar_Application.Queries.Clients;
 
 namespace TaxRadar_Application.Commands.Clients;
 
-public class CreateClientCommandHandler:IRequestHandler<CreateClientDto, ClientDto>
+public class CreateClientCommandHandler:IRequestHandler<CreateClientQuery, ClientDto>
 {
     private readonly IClientRepository _repository;
     private readonly IMapper _mapper;
@@ -19,7 +20,7 @@ public class CreateClientCommandHandler:IRequestHandler<CreateClientDto, ClientD
         _mapper = mapper;
 
     }
-    public async Task<ClientDto> Handle(CreateClientDto request, CancellationToken cancellationToken)
+    public async Task<ClientDto> Handle(CreateClientQuery request, CancellationToken cancellationToken)
     {
         var newClient = new Client(request.UserId, request.Name, request.Email,
             request.Ico,request.Dic,request.Street,request.City, request.PostalCode, request.Country);

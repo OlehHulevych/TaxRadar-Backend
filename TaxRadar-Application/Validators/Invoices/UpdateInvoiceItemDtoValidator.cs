@@ -1,9 +1,10 @@
 using FluentValidation;
 using TaxRadar_Application.DTOs.Invoices;
+using TaxRadar_Application.Queries.Invoices;
 
 namespace TaxRadar_Application.Validators.Invoices;
 
-public sealed class UpdateInvoiceItemDtoValidator : AbstractValidator<UpdateInvoiceItemDto>
+public sealed class UpdateInvoiceItemDtoValidator : AbstractValidator<UpdateInvoiceItemQuery>
 {
     public UpdateInvoiceItemDtoValidator()
     {

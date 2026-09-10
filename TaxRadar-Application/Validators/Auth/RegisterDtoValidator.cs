@@ -1,9 +1,10 @@
 using FluentValidation;
 using TaxRadar_Application.DTOs.Auth;
+using TaxRadar_Application.Queries.Auth;
 
 namespace TaxRadar_Application.Validators.Auth;
 
-public sealed class RegisterDtoValidator : AbstractValidator<RegisterDto>
+public sealed class RegisterDtoValidator : AbstractValidator<RegisterQuery>
 {
     public RegisterDtoValidator()
     {
