@@ -40,7 +40,7 @@ public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
         return invoices;
     }
 
-    public async Task AddItemToInvoice(Guid id, Guid itemId,CreateInvoiceItemQuery query, CancellationToken cancellationToken)
+    public async Task AddItemToInvoice(Guid id, CreateInvoiceItemQuery query, CancellationToken cancellationToken)
     {
         var invoice = await context.Invoices.FirstOrDefaultAsync(invoice => invoice.Id == id, cancellationToken);
         if (invoice == null) throw new NotFoundException(nameof(Invoice));

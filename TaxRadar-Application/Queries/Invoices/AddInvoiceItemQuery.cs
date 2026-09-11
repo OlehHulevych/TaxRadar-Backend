@@ -5,4 +5,4 @@ namespace TaxRadar_Application.Queries.Invoices;
 
 public sealed record AddInvoiceItemQuery(Guid
         InvoiceId, string Description, decimal Quantity,
-    decimal UnitPrice, decimal VatRatePercent):IRequest<InvoiceDto>;
+    decimal UnitPrice, decimal VatRatePercent):IRequest;
