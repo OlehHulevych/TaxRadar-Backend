@@ -6,10 +6,11 @@ using TaxRadar_Application.Queries.Invoices;
 
 namespace TaxRadar_Application.Commands.Invoices;
 
-public class AddInvoiceItemCommandHandler(IInvoiceRepository invoiceRepository, IMapper mapper):IRequestHandler<CreateInvoiceItemQuery, InvoiceDto>
+public class AddInvoiceItemCommandHandler(IInvoiceRepository invoiceRepository, IMapper mapper):IRequestHandler<AddInvoiceItemQuery, InvoiceDto>
 {
-    public async Task<InvoiceDto> Handle(CreateInvoiceItemQuery request, CancellationToken cancellationToken)
+    public async Task<InvoiceDto> Handle(AddInvoiceItemQuery request, CancellationToken cancellationToken)
     {
-        var invoice = await invoiceRepository.GetByIdAsync(request.)
+        
+        
     }
 }

@@ -2,6 +2,7 @@
 using Tax_Radar_Domain.Entities;
 using TaxRadar_Application.Exceptions;
 using TaxRadar_Application.Interfaces;
+using TaxRadar_Application.Queries.Invoices;
 using TaxRadar_Infrastructure.Persistance;
 
 namespace TaxRadar_Infrastructure.Repository;
@@ -39,18 +40,18 @@ public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
         return invoices;
     }
 
-    public async Task AddItemToInvoice(Guid id, InvoiceItem item, CancellationToken cancellationToken)
+    public async Task AddItemToInvoice(Guid id, Guid itemId,CreateInvoiceItemQuery query, CancellationToken cancellationToken)
     {
         var invoice = await context.Invoices.FirstOrDefaultAsync(invoice => invoice.Id == id, cancellationToken);
         if (invoice == null) throw new NotFoundException(nameof(Invoice));
-        invoice.AddItem(item.Description,item.Quantity,item.UnitPrice.Amount,item.VatRatePercent);
+        invoice.AddItem(query.Description,query.Quantity,query.UnitPrice,query.VatRatePercent);
         await context.SaveChangesAsync();
     }
 
-    public async Task RemoveItemFromInvoice(Guid id, InvoiceItem item, CancellationToken cancellationToken)
+    public async Task RemoveItemFromInvoice(Guid id, Guid itemId, CancellationToken cancellationToken)
     {
         var invoice = await context.Invoices.Include(invoice=>invoice.Items).FirstOrDefaultAsync(c=>c.Id==id,cancellationToken);
         if (invoice == null) throw new NotFoundException(nameof(Invoice), id);
-        invoice.RemoveItem(item.Id);
+        invoice.RemoveItem(itemId);
     }
 }
