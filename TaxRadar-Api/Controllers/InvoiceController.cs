@@ -16,27 +16,27 @@ public class InvoiceController(ISender sender):ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateInvoice([FromBody] CreateInvoiceItemQuery query)
+    public async Task<IActionResult> CreateInvoice([FromBody] CreateInvoiceQuery query)
     {
         var invoice = await sender.Send(query);
         return Ok(invoice);
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateInvoice([FromBody] UpdateInvoiceItemQuery query)
+    public async Task<IActionResult> UpdateInvoice([FromBody] UpdateInvoiceQuery query)
     {
         var invoice = await sender.Send(query);
         return Ok(invoice);
     }
 
-    [HttpPost("/add")]
+    [HttpPost("add")]
     public async Task<IActionResult> AddItemToInvoice([FromBody] AddInvoiceItemQuery query)
     {
         await sender.Send(query);
         return Ok(new { message = "Invoice item was added" });
     }
 
-    [HttpDelete("/remove")]
+    [HttpDelete("remove")]
     public async Task<IActionResult> RemoveItemFromInvoice([FromQuery] RemoveInvoiceItemQuery query)
     {
         await sender.Send(query);

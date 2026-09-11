@@ -12,7 +12,5 @@ public class AddInvoiceItemCommandHandler(IInvoiceRepository invoiceRepository):
     {
         var itemQuery = new CreateInvoiceItemQuery(request.Description,request.Quantity,request.UnitPrice,request.VatRatePercent);
         await invoiceRepository.AddItemToInvoice(request.InvoiceId, itemQuery, cancellationToken);
-        
-
     }
 }

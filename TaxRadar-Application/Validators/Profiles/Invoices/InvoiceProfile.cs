@@ -9,7 +9,7 @@ public class InvoiceProfile:Profile
     public InvoiceProfile()
     {
         CreateMap<Invoice, InvoiceDto>()
-            .ForCtorParam(nameof(InvoiceDto.TotalGrossAmount), opt=>opt.MapFrom(src=>src.GetTotalGrossAmount()));
+            .ForCtorParam(nameof(InvoiceDto.TotalGrossAmount), opt=>opt.MapFrom(src=>src.GetTotalGrossAmount().Amount));
         
 
     }

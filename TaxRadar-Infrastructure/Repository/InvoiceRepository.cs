@@ -12,7 +12,7 @@ public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
     public async Task<Invoice?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var expense = await context.Invoices.Include(invoice=>invoice.Items).FirstOrDefaultAsync(c=>c.Id==id,cancellationToken);
-        if (expense == null) throw new NotFoundException(nameof(Expense), id);
+        if (expense == null) throw new NotFoundException(nameof(Invoice), id);
         return expense;
     }
 
@@ -25,12 +25,12 @@ public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
     public async Task DeleteAsync(Invoice entity, CancellationToken cancellationToken)
     {
         context.Invoices.Remove(entity);
-        await context.SaveChangesAsync();
+        await context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
-        await context.SaveChangesAsync();
+        await context.SaveChangesAsync(cancellationToken);
     }
     
 
@@ -45,7 +45,7 @@ public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
         var invoice = await context.Invoices.FirstOrDefaultAsync(invoice => invoice.Id == id, cancellationToken);
         if (invoice == null) throw new NotFoundException(nameof(Invoice));
         invoice.AddItem(query.Description,query.Quantity,query.UnitPrice,query.VatRatePercent);
-        await context.SaveChangesAsync();
+        await context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task RemoveItemFromInvoice(Guid id, Guid itemId, CancellationToken cancellationToken)
@@ -53,5 +53,6 @@ public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
         var invoice = await context.Invoices.Include(invoice=>invoice.Items).FirstOrDefaultAsync(c=>c.Id==id,cancellationToken);
         if (invoice == null) throw new NotFoundException(nameof(Invoice), id);
         invoice.RemoveItem(itemId);
+        await context.SaveChangesAsync(cancellationToken);
     }
 }

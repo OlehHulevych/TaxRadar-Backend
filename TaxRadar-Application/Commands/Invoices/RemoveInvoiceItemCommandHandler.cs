@@ -9,6 +9,5 @@ public class RemoveInvoiceItemCommandHandler(IInvoiceRepository repository):IReq
     public async Task Handle(RemoveInvoiceItemQuery request, CancellationToken cancellationToken)
     {
         await repository.RemoveItemFromInvoice(request.InvoiceId, request.ItemId, cancellationToken);
-        
     }
 }
