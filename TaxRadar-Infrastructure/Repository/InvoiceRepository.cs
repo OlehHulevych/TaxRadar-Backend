@@ -1,0 +1,56 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Tax_Radar_Domain.Entities;
+using TaxRadar_Application.Exceptions;
+using TaxRadar_Application.Interfaces;
+using TaxRadar_Infrastructure.Persistance;
+
+namespace TaxRadar_Infrastructure.Repository;
+
+public class InvoiceRepository(ApplicationDbContext context):IInvoiceRepository
+{
+    public async Task<Invoice?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var expense = await context.Invoices.Include(invoice=>invoice.Items).FirstOrDefaultAsync(c=>c.Id==id,cancellationToken);
+        if (expense == null) throw new NotFoundException(nameof(Expense), id);
+        return expense;
+    }
+
+    public async Task AddAsync(Invoice entity, CancellationToken cancellationToken)
+    {
+        await context.Invoices.AddAsync(entity, cancellationToken);
+        await SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task DeleteAsync(Invoice entity, CancellationToken cancellationToken)
+    {
+        context.Invoices.Remove(entity);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task SaveChangesAsync(CancellationToken cancellationToken)
+    {
+        await context.SaveChangesAsync();
+    }
+    
+
+    public async Task<List<Invoice>> GetByUserId(Guid id, CancellationToken cancellationToken)
+    {
+        var invoices = await context.Invoices.Include(i=>i.Items).Where(e=>e.UserId==id).ToListAsync(cancellationToken);
+        return invoices;
+    }
+
+    public async Task AddItemToInvoice(Guid id, InvoiceItem item, CancellationToken cancellationToken)
+    {
+        var invoice = await context.Invoices.FirstOrDefaultAsync(invoice => invoice.Id == id, cancellationToken);
+        if (invoice == null) throw new NotFoundException(nameof(Invoice));
+        invoice.AddItem(item.Description,item.Quantity,item.UnitPrice.Amount,item.VatRatePercent);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task RemoveItemFromInvoice(Guid id, InvoiceItem item, CancellationToken cancellationToken)
+    {
+        var invoice = await context.Invoices.Include(invoice=>invoice.Items).FirstOrDefaultAsync(c=>c.Id==id,cancellationToken);
+        if (invoice == null) throw new NotFoundException(nameof(Invoice), id);
+        invoice.RemoveItem(item.Id);
+    }
+}

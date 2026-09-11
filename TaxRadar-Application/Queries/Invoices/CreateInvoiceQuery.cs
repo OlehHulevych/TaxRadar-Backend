@@ -1,3 +1,4 @@
+using MediatR;
 using Tax_Radar_Domain.Enums;
 using TaxRadar_Application.DTOs.Invoices;
 
@@ -11,4 +12,4 @@ public sealed record CreateInvoiceQuery(
     DateOnly DueDate,
     Currency Currency,
     string? Notes,
-    IReadOnlyList<CreateInvoiceItemQuery> Items);
+    IReadOnlyList<CreateInvoiceItemQuery> Items):IRequest<InvoiceDto>;
