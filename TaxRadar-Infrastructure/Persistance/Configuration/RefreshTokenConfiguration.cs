@@ -10,6 +10,7 @@ public class RefreshTokenConfiguration:IEntityTypeConfiguration<RefreshToken>
     {
         builder.ConfigureBaseEntity();
         builder.HasOne<User>().WithMany().HasForeignKey(e => e.UserId);
-        builder.Property(e => e.TokenHash).HasMaxLength(200);
+        builder.Property(e => e.TokenHash).HasMaxLength(64).IsRequired();
+        builder.HasIndex(e => e.TokenHash).IsUnique();
     }
 }
