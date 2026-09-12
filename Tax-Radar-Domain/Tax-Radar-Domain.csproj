@@ -7,8 +7,4 @@
         <RootNamespace>Tax_Radar_Domain</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Entities\" />
-    </ItemGroup>
-
 </Project>

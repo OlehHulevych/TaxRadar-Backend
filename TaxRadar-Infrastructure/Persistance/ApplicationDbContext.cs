@@ -14,6 +14,7 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<Invoice> Invoices => Set<Invoice>();
     public DbSet<Expense> Expenses => Set<Expense>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
     // InvoiceItem has no DbSet on purpose: it's only reachable via Invoice.Items,
     // matching the internal-only InvoiceItem constructor that makes Invoice the sole entry point.
